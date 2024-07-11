@@ -1,6 +1,6 @@
 # https://taskfile.dev
 
-version: '3.37'
+version: '3.38'
 
 interval: '100ms'
 
@@ -8,37 +8,16 @@ vars:
 
 tasks:
   default:
-    desc: "Lint check and unit test"
-    deps: [flake8, test]
-
-  watch:
-    desc: "Watch flake8 and unit tests"
-    deps: [flake8, test]
-    watch: true
-    sources:
-      - '**/*.py'
-      - '*.yml'
-
-  flake8:
-    aliases: [lint]
-    desc: "Lint check"
-    watch: true
-    cmds:
-      - flake8
+    deps: [test]
 
   test:
-    desc: "Unit tests"
     watch: true
+    sources:
+      - '**/*.sh'
+      - '**/*.bats'
     cmds:
-      - pytest
+      - bats **/*.bats
 
-  kick:
-    desc: Kick the CICD pipeline.
-    vars:
-      KICK: "$(pwd)/.kick-pipeline"
+  clean:
     cmds:
-      - |
-        date > {{.KICK}}
-        git add {{.KICK}}
-        git ci -m "kick"
-        git push
+     - rm -f *.log *~
