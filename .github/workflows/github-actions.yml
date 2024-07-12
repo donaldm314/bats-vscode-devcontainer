@@ -6,7 +6,9 @@ on:
 jobs:
   lint-and-unit:
     runs-on: ubuntu-latest
-    container: donaldm314/ubuntu-bats:28
+    container:
+      image: donaldm314/ubuntu-bats:28
+      options: --user root
     steps:
       - uses: actions/checkout@v4
       - name: "Test"
