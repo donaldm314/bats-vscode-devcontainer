@@ -9,10 +9,5 @@ jobs:
     container: bats/bats:1.11.0
     steps:
       - uses: actions/checkout@v4
-      - name: "Install dependencies"
-        run: |
-          ./install-dependencies.sh
-          which task
-          task --version
       - name: "Test"
         run: "task"
