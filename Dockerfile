@@ -1,1 +1,1 @@
-FROM donaldm314/ubuntu-bats:30
+FROM donaldm314/ubuntu-bats:34

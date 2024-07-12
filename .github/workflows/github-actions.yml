@@ -7,10 +7,10 @@ jobs:
   checkout-and-test:
     runs-on: ubuntu-latest
     container:
-      image: donaldm314/ubuntu-bats:30
+      image: donaldm314/ubuntu-bats:34
       options: --user root
     steps:
-      - uses: actions/checkout@v4.1.7
+      - uses: actions/checkout@v4
       - name: "Test"
         run: |
           task
