@@ -4,15 +4,12 @@ on:
     branches: [main]
 
 jobs:
-  lint-and-unit:
+  checkout-and-test:
     runs-on: ubuntu-latest
     container:
       image: donaldm314/ubuntu-bats:28
-      options: --user root
+      options: --user ubuntu
     steps:
       - uses: actions/checkout@v4
       - name: "Test"
-        run: |
-          task
-          id
-          ls -lart
+        run: task
